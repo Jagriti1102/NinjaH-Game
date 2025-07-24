@@ -1,0 +1,128 @@
+*{
+    margin :0;
+    padding : 0;
+}
+
+body{
+    background-color : white;
+    overflow: hidden;
+}
+
+.gamecontainer {
+     background-image: url(gameBG.jpg); 
+     background-repeat : no-repeat;
+     background-size : 100vw 100vh;
+     width : 100%;
+     height : 100vh;
+}
+.gameover {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;        /* start hidden */
+  font-size: 48px;
+  color: red;                /* or whatever contrast you need */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  z-index: 1000;             /* above everything else */
+}
+
+.ninja{
+    background-image : url(ninjo.png);
+    background-repeat : no-repeat;
+    background-size : contain;
+    width : 266px;
+    height: 164px;
+    position : absolute;
+    bottom : 100px;
+    left : 202px;
+
+}
+.obstacle{
+    background-image: url(ninja2.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width : 233px;
+    height : 114px;
+    position :absolute;
+    bottom : 100px;
+    left : 88vw;
+
+}
+/* add this to your CSS */
+#scoreCont {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 999;       /* bring it above the gamecontainer */
+  font-size: 24px;
+  color: rgb(243, 244, 241);        /* or any contrasting color */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+#finalScore {
+  position: absolute;      /* take it out of document flow */
+  top: 30%;               /* tweak to taste */
+  left: 50%;               /* center horizontally */
+  transform: translateX(-50%);
+  visibility: hidden;      /* your existing rule */
+  font-size: 200px;         /* your existing rule */
+  color: rgb(160, 229, 21); 
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);          /* your existing rule */
+  text-align: center;      /* your existing rule */
+  z-index: 1000;           /* your existing rule */
+}
+#designer {
+   position: absolute;      /* take it out of document flow */
+  top: 8%;               /* tweak to taste */
+  left: 50%;               /* center horizontally */
+  transform: translateX(-50%);
+  visibility: visible;      /* your existing rule */
+  font-size: 40px;         /* your existing rule */
+  color: rgb(21, 167, 229); 
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);          /* your existing rule */
+  text-align: center;      /* your existing rule */
+  z-index: 1000; 
+}
+
+.animateninja{
+    animation: ninja 0.6s linear;
+}
+
+.obstacleAni{
+    animation : obstacleAni 4s linear infinite;
+}
+.gameover{
+    visibility : hidden;
+    
+}
+@keyframes ninja{
+    0%{
+        bottom : 100px;
+    }
+    50%{
+        bottom : 900px;
+    }
+    100%{
+        bottom : 0;
+    }
+}
+
+@keyframes obstacleAni{
+    0%{
+        left : 88vw;
+
+    }
+    100% {
+       left : -10vw;
+    }
+}
+@keyframes fall {
+  0%   { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(200px) rotate(90deg); }
+}
+
+/* 2. A helper class that will run it once, and freeze at the end */
+.fall {
+  animation: fall 1s ease-in forwards;
+}
